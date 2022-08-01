@@ -1,24 +1,17 @@
 import request from '@/utils/request'
-
-export function login(data) {
-  return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
+// 登录
+export const login = (data) => {
+  return request({
+    method: 'post',
+    url: '/user-service/user/login',
     data
-  })
+  })
 }
-
-export function getInfo(token) {
-  return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
-}
-
-export function logout() {
-  return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
-  })
+// 图片验证码
+export const imageCodeApi = (clientToken) => {
+  return request({
+   method: 'get',
+    url: `/user-service/user/imageCode/${clientToken}`,
+    responseType:'blob'
+  })
 }
