@@ -1,10 +1,12 @@
 <template>
-  <div :class="{ 'has-logo': showLogo }">
-    <!-- 左侧logo -->
-    <logo v-if="showLogo" :collapse="isCollapse" />
-
-    <el-scrollbar wrap-class="scrollbar-wrapper"> </el-scrollbar>
-  </div>
+     <div :class="{'has-logo':showLogo}">
+       <!-- 左侧logo -->
+       <logo v-if="showLogo" :collapse="isCollapse" />
+       <el-scrollbar wrap-class="scrollbar-wrapper">
+         ...
+       </el-scrollbar>
+     </div>
+   </template>
 </template>
 
 <script>
@@ -36,7 +38,7 @@ export default {
       return variables;
     },
     isCollapse() {
-      return !this.sidebar.opened;
+      return false;
     },
   },
 };
