@@ -15,3 +15,10 @@ export const imageCodeApi = (clientToken) => {
     responseType:'blob'
   })
 }
+// 获取用户基本信息
+export const userInfoApi = (id) => {
+  return request({
+   method: 'get',
+    url: `/user-service/user/${id}`
+  })
+}

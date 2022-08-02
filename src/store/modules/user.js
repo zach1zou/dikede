@@ -1,30 +1,38 @@
-import { login } from "@/api/user"
-import router from "@/router"
-
+import { login,userInfoApi } from "@/api/user"
 export default {
   namespaced: true,
   state: {
-    token:localStorage.getItem('token')||'',
+    token:JSON.parse(localStorage.getItem('token')) || '',
+    userId:JSON.parse(localStorage.getItem('userId')) || '',
+    userInfo: {}
   },
   mutations: {
     setToken(state, payload) {
       state.token = payload
-      localStorage.setItem('token', payload)
-     
-     }
+      localStorage.setItem('token', JSON.stringify(payload))
+    },
+    setUserId(state, payload) {
+      state.userId = payload
+      localStorage.setItem('userId', JSON.stringify(payload))
+    }
+    ,
+    setUserInfo(state, payload) { 
+      state.userInfo = payload
+    }
   },
   actions: {
     async getToken(context, payload) {
-         const {data} = await login(payload)
-      console.log(data.msg);
-      if (data.msg === '验证码错误') {
-        return
-      } else { 
-       router.push('/')
-      }
-
+      const { data} = await login(payload)
         context.commit('setToken', data.token)
-     }
+    },
+    async getUserId(context, payload) {
+      const { data} = await login(payload)
+        context.commit('setUserId', data.userId)
+    },
+    async getUserInfo(context) { 
+      const res = await userInfoApi(localStorage.getItem('userId'))
+      context.commit('setUserInfo', res.data)
+    }
   }
 }
 

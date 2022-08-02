@@ -10,7 +10,7 @@
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
-    background-color: $menuBg;
+  background:white;
     height: 100%;
     position: fixed;
     font-size: 0px;
@@ -19,7 +19,8 @@
     left: 0;
     z-index: 1001;
     overflow: hidden;
-
+    
+   
     // reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
@@ -39,7 +40,7 @@
 
     &.has-logo {
       .el-scrollbar {
-        height: calc(100% - 50px);
+        height: calc(100% - 60px);
       }
     }
 
@@ -62,10 +63,35 @@
       margin-left: -2px;
     }
 
-    .el-menu {
+.el-menu {
       border: none;
       height: 100%;
       width: 100% !important;
+      background-color: transparent;
+      a {
+        li {
+          .svg-icon {
+            color: black;
+            font-size: 18px;
+            vertical-align: middle;
+            .icon {
+              color: black;
+            }
+          }
+          span {
+            color: black;
+          }
+          &:hover {
+            background-color: black !important;
+            .svg-icon {
+              color: #43a7fe;
+            }
+            span {
+              color: #43a7fe;
+            }
+          }
+        }
+      }
     }
 
     // menu hover

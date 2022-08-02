@@ -136,13 +136,21 @@ export default {
     },
     async handleLogin() {
       await this.$refs.loginForm.validate();
-      this.$store.dispatch("user/getToken", {
+      await this.$store.dispatch("user/getToken", {
         loginName: this.loginForm.mobile,
         password: this.loginForm.password,
         code: this.loginForm.code,
         clientToken: this.codeSub,
         loginType: 0,
       });
+      await this.$store.dispatch("user/getUserId", {
+        loginName: this.loginForm.mobile,
+        password: this.loginForm.password,
+        code: this.loginForm.code,
+        clientToken: this.codeSub,
+        loginType: 0,
+      });
+      this.$router.push("/");
     },
     async getCode() {
       const radomNum = Math.round(Math.random() * 10000);
