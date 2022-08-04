@@ -1,5 +1,5 @@
 <template>
-  <div>user</div>
+  <div>点位管理</div>
 </template>
 <script>
 export default {

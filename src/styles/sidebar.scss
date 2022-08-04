@@ -9,6 +9,7 @@
 
   .sidebar-container {
     transition: width 0.28s;
+    min-width: $sideBarWidth !important;
     width: $sideBarWidth !important;
   background:white;
     height: 100%;
@@ -83,7 +84,7 @@
             color: black;
           }
           &:hover {
-            background-color: black !important;
+            background-color: white !important;
             .svg-icon {
               color: #43a7fe;
             }
@@ -98,8 +99,10 @@
     // menu hover
     .submenu-title-noDropdown,
     .el-submenu__title {
+
       &:hover {
         background-color: $menuHover !important;
+       
       }
     }
 
@@ -149,7 +152,7 @@
 
       &>.el-submenu__title {
         padding: 0 !important;
-
+        
         .svg-icon {
           margin-left: 20px;
         }

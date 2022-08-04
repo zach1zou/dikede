@@ -1,4 +1,5 @@
 import { login,userInfoApi } from "@/api/user"
+import { setTokenTime } from "@/utils/auth"
 export default {
   namespaced: true,
   state: {
@@ -23,7 +24,8 @@ export default {
   actions: {
     async getToken(context, payload) {
       const { data} = await login(payload)
-        context.commit('setToken', data.token)
+      context.commit('setToken', data.token)
+      setTokenTime()
     },
     async getUserId(context, payload) {
       const { data} = await login(payload)
@@ -32,7 +34,11 @@ export default {
     async getUserInfo(context) { 
       const res = await userInfoApi(localStorage.getItem('userId'))
       context.commit('setUserInfo', res.data)
-    }
+    },
+    logout(context) {
+      context.commit('setToken', '')
+      context.commit('setUserInfo', {})
+     }
   }
 }
 

@@ -6,9 +6,11 @@
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img
+            src=""
             :src="$store.state.user.userInfo.image"
             class="user-avatar"
             style="border-radius: 50%"
+            v-imgError="defaultImg"
           />
           <span style="padding-right: 80px"
             >欢迎您,{{ $store.state.user.userInfo.loginName }}</span
@@ -38,6 +40,12 @@ export default {
     Breadcrumb,
     Hamburger,
   },
+  data() {
+    return {
+      defaultImg:
+        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+    };
+  },
   computed: {
     ...mapGetters(["sidebar", "avatar"]),
   },
@@ -47,7 +55,7 @@ export default {
     },
     async logout() {
       await this.$store.dispatch("user/logout");
-      localStorage.removeItem("token");
+
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
   },
