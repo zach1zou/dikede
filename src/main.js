@@ -12,6 +12,14 @@ import App from './App'
 import store from './store'
 import router from './router'
 
+import zzlUI from '@/components/index'
+Vue.use(zzlUI)
+Vue.filter('transformDate', (value) => { 
+  return value.replace('T',' ')
+})
+
+
+
 import '@/icons' // icon
 import '@/permission' // permission control
 import * as directives from '@/directives'
